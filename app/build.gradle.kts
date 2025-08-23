@@ -37,7 +37,9 @@ android {
     buildFeatures {
         viewBinding= true
     }
+
 }
+
 
 dependencies {
 
@@ -48,6 +50,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.storage)
+    implementation(libs.firebase.auth)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -56,4 +59,8 @@ dependencies {
     implementation("androidx.media3:media3-exoplayer-dash:1.7.1")
     implementation("androidx.media3:media3-ui:1.7.1")
     implementation("androidx.media3:media3-ui-compose:1.7.1")
+    implementation("jp.wasabeef:glide-transformations:4.3.0")
+    // If you want to use the GPU Filters
+    implementation ("jp.co.cyberagent.android:gpuimage:2.1.0")
+
 }

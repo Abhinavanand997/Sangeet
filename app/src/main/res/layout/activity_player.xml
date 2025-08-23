@@ -1,68 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/black"
-    android:padding="16dp"
-    android:gravity="center_horizontal"
     tools:context=".PlayerActivity">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Now Playing"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="16dp"
-        />
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        >
-    <ImageView
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:id="@+id/song_cover_image_view"
-        android:layout_gravity="center"
-        />
-    <ImageView
-        android:layout_width="310dp"
-        android:layout_height="310dp"
-        android:id="@+id/song_gif_image_view"
-        android:layout_gravity="center"
-        android:visibility="invisible"
-        />
-    </FrameLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="song name"
-        android:textSize="22sp"
-        android:textColor="@color/textWhite"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"
-        android:id="@+id/song_title_text_view"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="artist"
-        android:textSize="20sp"
-        android:textColor="@color/textWhite"
-        android:layout_marginTop="8dp"
-        android:id="@+id/song_artist_text_view"
-        />
+
     <androidx.media3.ui.PlayerView
+        android:id="@+id/background_video_view"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="8dp"
-        app:hide_on_touch="false"
-        app:show_timeout="0"
-        android:id="@+id/player_view"
-        />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        app:use_controller="false"
+        app:image_display_mode="fill"
+        android:focusable="false"
+        android:clickable="false"
+        android:importantForAccessibility="no"
+        app:resize_mode="zoom"
+        app:show_buffering="never"
+        app:surface_type="texture_view"
+        android:background="@color/textWhite" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:scaleType="fitXY"
+        android:src="@drawable/bottom_gradient" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="16dp"
+        android:gravity="center_horizontal"
+        android:background="@android:color/transparent">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PLAYING SONG"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+             android:textStyle="bold"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Now Playing"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:layout_marginTop="2dp"
+            android:gravity="center_horizontal"
+            android:id="@+id/album_name"/>
+
+
+        <!-- Audio Controls -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="510dp"
+            android:layout_gravity="bottom">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Transparent"
+                android:id="@+id/playerr_view"
+                android:layout_alignParentBottom="true">
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:scaleType="fitXY"
+                    android:layout_margin="8dp"
+                    android:id="@+id/song_coverr_image_view" />
+
+                <TextView
+                    android:id="@+id/song_titlee_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:layout_toEndOf="@id/song_coverr_image_view"
+                    android:text="Now playing : "
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="4dp"/>
+
+                <TextView
+                    android:id="@+id/song_artistt_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/song_titlee_text_view"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="6dp"
+                    android:text="artist"
+                    android:layout_toEndOf="@id/song_coverr_image_view"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="4dp"/>
+
+            </RelativeLayout>
+
+
+            <androidx.media3.ui.PlayerView
+            android:id="@+id/player_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/Transparent"
+            app:hide_on_touch="false"
+            app:show_timeout="0"
+            android:isScrollContainer="true"
+            app:surface_type="none"
+            android:alpha="0.55"/>
+
+
+</FrameLayout>
+
+
+
+
+
+
+    </LinearLayout>
+
+</FrameLayout>

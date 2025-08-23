@@ -1,6 +1,8 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -23,16 +25,40 @@ class SongsListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         binding= ActivitySongsListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
         binding.nameTextView.text= category.name
         Glide.with(binding.coverImageView).load(category.coverUrl).apply(
             RequestOptions().transform(RoundedCorners(32))).into(binding.coverImageView)
         setupSongsListRecyclerView()
     }
+    override fun onResume() {
+        super.onResume()
+        showPlayerView()
+
+    }
     fun setupSongsListRecyclerView(){
         songsListAdapter= SongsListAdapter(category.songs)
         binding.songsListRecyclerView.layoutManager= LinearLayoutManager(this)
         binding.songsListRecyclerView.adapter=songsListAdapter
+    }
+    fun showPlayerView(){
+        binding.playerView.setOnClickListener {
+            startActivity(Intent(this, PlayerActivity::class.java))
+        }
+        MyExoplayer.getCurrentSong()?.let {
+            binding.playerView.visibility= View.VISIBLE
+            binding.songTitleTextView.text=it.title
+            Glide.with(binding.songCoverImageView).load(it.coverUrl)
+                .into(binding.songCoverImageView)
+        } ?: run {
+            binding.playerView.visibility= View.GONE
+        }
     }
 }

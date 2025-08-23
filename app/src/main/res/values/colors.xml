@@ -5,4 +5,7 @@
     <color name="magic">#392E6F</color>
     <color name="statusBarColor">#B79ED5</color>
     <color name="textWhite">#CFCFD0</color>
+    <color name="playerback">#C88CD7</color>
+    <color name="damn">#EE723483</color>
+    <color name="Transparent">#00FBFBFB</color>
 </resources>
