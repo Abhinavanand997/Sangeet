@@ -21,7 +21,7 @@ class CategoryAdapter(private val categoryList: List<CategoryModel>) :
     class MyViewHolder(private val binding :CategoryItemRecylerRowBinding):RecyclerView.ViewHolder(binding.root){
 
         fun bindData(category: CategoryModel){
-            binding .nameTextView.text =category.name
+            binding .nameTextView.text =category.name.uppercase()
             Glide.with(binding.coverImageView).load(category.coverUrl).apply(
                 RequestOptions().transform(RoundedCorners(32))).into(binding.coverImageView)
             val context =binding.root.context

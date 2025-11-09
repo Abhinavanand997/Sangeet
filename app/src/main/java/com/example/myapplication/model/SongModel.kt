@@ -1,12 +1,13 @@
 package com.example.myapplication.model
 
+
 data class SongModel(
-    val id : String,
+    val id: String,
     val title: String,
     val artist: String,
-    val Url : String,
-    val coverUrl : String,
-    val videoUrl : String,
-){
-    constructor(): this("","","","","","")
+    val url: String,
+    val coverUrl: String,
+    val videoUrl: String
+) {
+    constructor() : this("", "", "", "", "", "")
 }

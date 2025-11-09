@@ -25,7 +25,7 @@ class SectionSongListAdapter(private val songIdList: List<String>):
                 .addOnSuccessListener {
                     val song = it.toObject(SongModel::class.java)
                     song?.apply {
-                        binding.songTitleTextView.text = title
+                        binding.songTitleTextView.text = title.uppercase()
                         binding.songArtistTextView.text = artist
                         Glide.with(binding.songCoverImageView).load(coverUrl)
                             .apply(
