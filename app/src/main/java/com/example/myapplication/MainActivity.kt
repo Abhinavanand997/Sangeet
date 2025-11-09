@@ -166,7 +166,7 @@ class MainActivity : AppCompatActivity() {
         MyExoplayer.getCurrentSong()?.let {
             binding.playerView.visibility= View.VISIBLE
             binding.songTitleTextView.text=it.title
-            Glide.with(binding.songCoverImageView).load(it.coverUrl).apply( RequestOptions().transform(RoundedCorners(32)))
+            Glide.with(binding.songCoverImageView).load(it.coverUrl)
                 .into(binding.songCoverImageView)
             exoplayer= MyExoplayer.getInstance()!!
             binding.playerrView.player=exoplayer
